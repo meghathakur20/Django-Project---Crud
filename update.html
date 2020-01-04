@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Farmerse</title>
+    <style>
+    .navbar-inverse {
+    background-color: black;
+    border-color: black;
+    font-family: Times New Roman;
+    font-weight: 40px;
+    font-size:22px;
+}
+.button {
+  background-color: black;
+  border: none;
+  color: white;
+}
+
+element.style {
+    margin: auto;
+    max-width: 320px;
+}
+  </style>
+    <meta charset="UTF-8">
+    <title>Farmerse</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar-inverse">
+<div id="main" >
+{% load static %}
+  <div class="container-fluid" >
+    <div class="navbar-header" style="" >
+      <a class="navbar-brand" style="font-size:26px" href="#">Farmerse</a>
+    </div>
+    <form class="navbar-form navbar-left" action="profile" method=" post" >
+       <div class="nav navbar-nav">
+      <button class="button" style="float:right"> Home </button>
+       </div>
+    </form>
+        <form class="navbar-form navbar-left" action="profile" method=" post" >
+      <div class="nav navbar-nav">
+         <button  class="button" style="float:right"> Profile </button>
+      </div>
+        </form>
+      <form class="navbar-form navbar-left" action="logout" method=" post" >
+        <div class="nav navbar-nav">
+         <button class="button" style="float:right"> Logout </button>
+      </div>
+    </form>
+
+  </div>
+  </div>
+
+</nav>
+</head>
+<body>
+<h1> Entry has been Updated.</h1>
+</body>
+</html>

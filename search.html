@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <style>
+    .navbar-inverse {
+    background-color: black;
+    border-color: black;
+    font-family: Times New Roman;
+    font-weight: 40px;
+    font-size:22px;
+}
+.button {
+  background-color: black;
+  border: none;
+  color: white;
+}
+
+element.style {
+    margin: auto;
+    max-width: 320px;
+}
+  </style>
+    <meta charset="UTF-8">
+    <title>Farmerse</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar-inverse">
+<div id="main" >
+{% load static %}
+  <div class="container-fluid" >
+    <div class="navbar-header" style="" >
+      <a class="navbar-brand" style="font-size:26px" href="#">Farmerse</a>
+    </div>
+    <form class="navbar-form navbar-left" action="profile" method=" post" >
+       <div class="nav navbar-nav">
+      <button class="button" style="float:right"> Home </button>
+       </div>
+    </form>
+        <form class="navbar-form navbar-left" action="profile" method=" post" >
+      <div class="nav navbar-nav">
+         <button  class="button" style="float:right"> Profile </button>
+      </div>
+        </form>
+      <form class="navbar-form navbar-left" action="logout" method=" post" >
+        <div class="nav navbar-nav">
+         <button class="button" style="float:right"> Logout </button>
+      </div>
+    </form>
+
+  </div>
+  </div>
+
+</nav>
+<div class="col-md-4"  style="float:center; margin-right: 6%">
+  <div>
+
+   <!--<form id ="search" action=" "  method="POST"  >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <h3 style = "font : Times New Roman: serif; font-weight: 900;font-color :white; " > {{ request.user.username }}'s Details </h3>
+
+          First name: <input type="text"  id="first_name" name="first_name" required class="form-control" value="{{ request.user.first_name }}"><br>
+
+          Last name: <input type="text" id="last_name" name="last_name" required class="form-control" value="{{ request.user.last_name }}"><br>
+
+
+          Email: <input type="text" id="email"  name="email" required class="form-control" value="{{ request.user.email }}"><br>
+
+
+          Username: <input type="text" id="username" name="username" required class="form-control" value="{{ request.user.username }}"><br>
+
+
+          Password:<input type="password" id="password" name="password" required class="form-control" value ="{{ request.user.password }}"><br>
+
+
+    </form>-->
+      <form id ="updateform" action="update" method="POST" >
+        {% csrf_token %}
+        <h3 style = "font : Times New Roman: serif; font-weight: 900;font-color :white; " > {{ request.user.username }}'s Details </h3>
+          <input type="text" placeholder="First name" name="first_name" required class="form-control" value="{{ request.user.first_name }}"><br>
+
+          <input type="text" placeholder="Last name" name="last_name" required class="form-control" value="{{ request.user.last_name }}"><br>
+
+          <input type="text" placeholder="Email" name="email" required class="form-control" value="{{ request.user.email }}"><br>
+
+          <input type="text" placeholder="Username" name="username" required class="form-control" value="{{ request.user.username }}"><br>
+
+          <input type="password" placeholder="Password" name="password" required class="form-control" value ="{{ request.user.password }}"><br>
+
+          <button  type="submit" class="btn btn-primary " style="width: 100px">Update</button>
+
+        </form >
+    <!-- <form action="update"  method="POST">
+           {% csrf_token %}
+          <button id="update"  type="submit" style ="float:left" class="btn btn-primary signupbtn">Update </button>
+    </form>-->
+    <form action="delete"  method="POST">
+           {% csrf_token %}
+           <button id="delete"   type="submit"  style="margin-top:10px; width: 100px" class="btn btn-primary signupbtn" >Delete</button>
+    </form>
+
+
+    </div>
+</div>
+</body>
+<script type ="text/javascript" src="{% static 'js/material.js' %}"></script>
+<script type ="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type ="text/javascript" src="{% static 'js/material.js' %}"></script>
+
+<script type ="text/javascript" src="{% static 'js/material.js' %}"></script>
+<script type ="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type ="text/javascript" src="{% static 'js/material.js' %}"></script>
+<script type="text/javascript">
+
+        $(document).on('submit','#updateform',function(e){
+            e.preventDefault();
+
+            $.ajax({
+                type:'POST',
+                url: 'update',
+                data:{
+                    first_name:$('#firstname').val(),
+                    last_name:$('#lastname').val(),
+
+                    email:$('#email').val(),
+                    username:$('#username').val(),
+                    password:$('#password').val(),
+                    csrfmiddlewaretoken:${'input[first_name=csrfmiddlewaretoken]'}.val()
+                 },
+                 success:function(){
+                    alert("New User updated");
+                 }
+
+
+              });
+        });
+
+</script>
+</html>
